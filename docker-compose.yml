@@ -1,0 +1,9 @@
+services:
+  prusa_rtsp_cam:
+    build: .
+    container_name: prusa_rtsp_cam
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - ./.prusa_rtsp_cam/:/app/fingerprint/
