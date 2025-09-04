@@ -54,7 +54,7 @@ def upload_frame_to_prusa(frame):
     response = requests.put(f"{api_url}/c/snapshot", headers=headers, data=cv2.imencode('.jpg', frame)[1].tobytes())
     if not response.ok:
         raise ValueError("Failed to upload frame to Prusa")
-    return response.json()
+    return response
 
 
 if __name__ == "__main__":
