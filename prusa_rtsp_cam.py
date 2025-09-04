@@ -52,7 +52,7 @@ def upload_frame_to_prusa(frame):
     prusa_camera_token = os.getenv("PRUSA_CAMERA_TOKEN")
     headers = { "Token": prusa_camera_token, "Fingerprint": read_camera_uuid()}
     response = requests.put(f"{api_url}/c/snapshot", headers=headers, data=cv2.imencode('.jpg', frame)[1].tobytes())
-    if response.status_code != 200:
+    if not response.ok:
         raise ValueError("Failed to upload frame to Prusa")
     return response.json()
 
